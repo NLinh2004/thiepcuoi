@@ -11,12 +11,15 @@
         rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
+        html, body {
+            width: 800px;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow-x: hidden;
             font-family: 'Playfair Display', serif;
             background: #fffafc;
-            overflow-x: hidden;
             font-size: 22px;
+            padding: 0;
         }
 
         /* ===== MỞ THIỆP ===== */
@@ -78,6 +81,9 @@
             overflow: hidden;
             white-space: nowrap;
             margin: 20px 0;
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
         }
 
         .track {
@@ -416,12 +422,20 @@
     </div>
 
     <!-- RSVP BÌNH CHỌN -->
-    <div class="card">
-        <h2>💌 Xác nhận tham dự</h2>
-        <label><input type="radio" name="rsvp" value="yes"> Tôi sẽ tham gia</label><br>
-        <label><input type="radio" name="rsvp" value="no"> Tôi không tham gia</label><br>
-        <input type="text" id="guest-name" placeholder="Tên khách mời">
-        <button onclick="submitRSVP()">Gửi phản hồi</button>
+    <div class="card rsvp-card" style="padding: 50px 30px;">
+        <h2 style="font-size: 55px; color: #ff6b9e; margin-bottom: 40px;">💌 Xác nhận tham dự</h2>
+        <div style="font-size: 34px; text-align: left; margin: 0 auto 30px auto; display: inline-block;">
+            <label style="cursor: pointer; display: block; margin-bottom: 25px;">
+                <input type="radio" name="rsvp" value="yes" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
+                Tôi sẽ tham gia! 🎉
+            </label>
+            <label style="cursor: pointer; display: block;">
+                <input type="radio" name="rsvp" value="no" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
+                Tôi không tham gia 😔
+            </label>
+        </div>
+        <input type="text" id="guest-name" placeholder="Nhập tên khách mời..." style="height: 80px; font-size: 36px; padding: 20px; border: 3px solid #ffb6c1; margin-top: 20px; margin-bottom: 40px;">
+        <button onclick="submitRSVP()" style="font-size: 40px; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255,105,180,0.4);">GỬI PHẢN HỒI</button>
     </div>
 
     <script>
