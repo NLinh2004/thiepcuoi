@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Elegant</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #fffafc;
+    overflow-x: hidden;
+}
+
+/* ===== MỞ THIỆP ===== */
+.open-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    flex-direction: column;
+}
+.open-btn {
+    padding: 15px 30px;
+    background: pink;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* TITLE */
+.title {
+    text-align: center;
+    padding: 50px 20px;
+}
+.title h1 {
+    font-family: 'Dancing Script';
+    font-size: 50px;
+}
+
+/* ROW 3 ẢNH */
+.row-3 {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+.row-3 img {
+    width: 30%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+.row-3 img:hover {
+    transform: scale(1.05);
+}
+
+/* ẢNH TRƯỢT */
+.slide-left, .slide-right {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 20px 0;
+}
+.track {
+    display: inline-block;
+}
+.slide-left .track {
+    animation: leftMove 15s linear infinite;
+}
+.slide-right .track {
+    animation: rightMove 15s linear infinite;
+}
+
+.slide-left img, .slide-right img {
+    width: 250px;
+    height: 350px;
+    margin: 0 10px;
+    border-radius: 15px;
+}
+
+@keyframes leftMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes rightMove {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* CARD */
+.card {
+    position: relative;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 2px solid #ffd6e0;
+}
+.card::before {
+    content: "❀";
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    font-size: 25px;
+    color: pink;
+}
+.card::after {
+    content: "❀";
+    position: absolute;
+    bottom: -15px;
+    right: -10px;
+    font-size: 25px;
+    color: pink;
+}
+
+/* ===== CALENDAR ===== */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 15px;
+}
+.calendar-grid span {
+    padding: 8px;
+    background: #ffe4ec;
+    border-radius: 8px;
+}
+.calendar-grid .active {
+    background: pink;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+/* ===== 2 ẢNH BAY ===== */
+.double-img {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.double-img img {
+    width: 40%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    opacity: 0;
+}
+.left-img {
+    transform: translateX(-120vw) rotate(-10deg) scale(0.8);
+}
+.right-img {
+    transform: translateX(120vw) rotate(10deg) scale(0.8);
+}
+.show .left-img {
+    animation: flyLeft 1.2s forwards;
+}
+.show .right-img {
+    animation: flyRight 1.2s forwards;
+}
+@keyframes flyLeft {
+    to { transform: translateX(0) rotate(-3deg) scale(1); opacity: 1; }
+}
+@keyframes flyRight {
+    to { transform: translateX(0) rotate(3deg) scale(1); opacity: 1; }
+}
+
+/* MAP */
+iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+/* ===== ALBUM XỊN ===== */
+.album-fancy {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 150px 200px 150px;
+    gap: 10px;
+    margin-top: 20px;
+}
+.album-fancy img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+.album-fancy img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+.big {
+    grid-column: 2;
+    grid-row: 1 / 4;
+}
+
+/* ===== BUTTON NGÂN HÀNG ===== */
+.bank-btn {
+    display: block;
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(45deg, pink, #ff9ecf);
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* RSVP */
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+button {
+    background: pink;
+    border: none;
+}
+
+/* HOA */
+.flower {
+    position: fixed;
+    top: -10px;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    100% { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="open-screen" id="openScreen">
+    <h2>💌 Bạn có một thiệp mời</h2>
+    <div class="open-btn" onclick="openInvite()">Mở thiệp</div>
+</div>
+
+<!-- THIỆP MỜI CHÍNH -->
+<div class="card">
+    <h2>💍 Thiệp mời</h2>
+    <p><b>Hữu Phước 💕 Diễm My</b></p>
+    <p>Thứ 6 - 5 giờ ngày 3-4-2026</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
+        <!-- Nhà trai -->
+        <div>
+            <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà trai</h3>
+            <p><b>Ông:</b> Tăng Trường Giang<br>
+            <b>Bà:</b> Lê Kiều Mai<br>
+            (Ấp Phước Thành, xã Vĩnh Phước, Cà Mau)</p>
+        </div>
+
+        <!-- Nhà gái -->
+        <div>
+            <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà gái</h3>
+            <p><b>Ông:</b> Hồ Văn Nhựt<br>
+            <b>Bà:</b> Nguyễn Ngọc Bích<br>
+            (Ấp Phước Thành, xã Vĩnh Phước, tỉnh Cà Mau)</p>
+        </div>
+    </div>
+</div>
+
+<div class="title">
+    <h1>Hữu Phước 💕 Diễm My</h1>
+    <img src="images/6.JPG" alt="Ảnh cưới 6">
+</div>
+<div class="row-3">
+        <img src="images/1.JPG" alt="Ảnh cưới 1">
+        <img src="images/4.jpg" alt="Ảnh cưới 4">
+        <img src="images/5.jpg" alt="Ảnh cưới 5">
+</div>
+
+<div class="card">
+    <h2>Câu chuyện của chúng tôi</h2>
+    <p>Từ những ngày đầu gặp gỡ đến hôm nay...</p>
+</div>
+
+<div class="slide-right">
+    <div class="track">
+        <img src="images/1.JPG" alt="Ảnh cưới 1">
+        <img src="images/2.jpg" alt="Ảnh cưới 2">
+        <img src="images/3.jpg" alt="Ảnh cưới 3">
+        <img src="images/4.jpg" alt="Ảnh cưới 4">
+
+        <!-- Lặp lại để nối tiếp -->
+        <img src="images/1.JPG" alt="Ảnh cưới 1">
+        <img src="images/2.jpg" alt="Ảnh cưới 2">
+        <img src="images/3.jpg" alt="Ảnh cưới 3">
+        <img src="images/4.jpg" alt="Ảnh cưới 4">
+    </div>
+</div>
+
+
+
+<div class="card">
+    <h2>📅 Lịch cưới</h2>
+    <h3>Tháng 4 - 2026</h3>
+    <div class="calendar-grid">
+        <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+        <!-- Tuần 1 -->
+        <span></span><span></span><span></span><span></span><span></span><span class="active">3</span><span>4</span>
+        <!-- Tuần 2 -->
+        <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+        <!-- Tuần 3 -->
+        <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+        <!-- Tuần 4 -->
+        <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+        <!-- Tuần 5 -->
+        <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+    </div>
+    <p>📍 Cà Mau</p>
+</div>
+
+
+<div class="card fade-block">
+    <div class="double-img">
+        <img src="images/2.JPG" alt="Ảnh cưới 2" class="left-img">
+        <img src="images/3.JPG" alt="Ảnh cưới 3" class="right-img">
+    </div>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.167492569929!2d105.3865051!3d9.3787336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjInNDMuNCJOIDEwNcKwMjMnMTEuNCJF!5e0!3m2!1svi!2s!4v1710920000000!5m2!1svi!2s" 
+        width="100%" 
+        height="250" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+
+<!-- ALBUM XỊN -->
+<div class="card">
+    <h2>📸 Album của chúng tôi</h2>
+    <div class="album-fancy">
+        <img src="images/1.JPG" alt="Ảnh cưới 1">
+        <img src="images/2.JPG" alt="Ảnh cưới 2">
+        <img src="images/6.JPG" alt="Ảnh cưới 6" class="big">
+        <img src="images/3.JPG" alt="Ảnh cưới 3">
+        <img src="images/4.JPG" alt="Ảnh cưới 4">
+    </div>
+</div>
+
+<!-- RSVP BÌNH CHỌN -->
+<div class="card">
+    <h2>💌 Xác nhận tham dự</h2>
+    <label><input type="radio" name="rsvp" value="yes"> Tôi sẽ tham gia</label><br>
+    <label><input type="radio" name="rsvp" value="no"> Tôi không tham gia</label><br>
+    <input type="text" id="guest-name" placeholder="Tên khách mời">
+    <button onclick="submitRSVP()">Gửi phản hồi</button>
+</div>
+
+<script>
+async function submitRSVP() {
+    const nameInput = document.getElementById('guest-name').value.trim();
+    const rsvpRadio = document.querySelector('input[name="rsvp"]:checked');
+    
+    if (!nameInput) {
+        alert("Vui lòng nhập tên của bạn!");
+        return;
+    }
+    if (!rsvpRadio) {
+        alert("Vui lòng chọn trạng thái tham dự!");
+        return;
+    }
+    
+    try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbz6THjFQUl3OLzpS7_Wu7DDcTtsyIPlqOjqRkfjQpG8MIMG2smJp8sCUiCgMNYqc29bNA/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+                name: nameInput,
+                rsvp: rsvpRadio.value
+            })
+        });
+        const result = await res.json();
+        if (result.success) {
+            alert("Cảm ơn bạn đã gửi xác nhận tham dự! 💖");
+            document.getElementById('guest-name').value = '';
+            rsvpRadio.checked = false;
+        } else {
+            alert("Có lỗi xảy ra. Vui lòng thử lại!");
+        }
+    } catch (err) {
+        alert("Hiện tại không thể kết nối hoặc lưu dữ liệu, vui lòng thử lại sau!");
+    }
+}
+
+function openInvite(){
+    document.getElementById("openScreen").style.display = "none";
+}
+
+setInterval(()=>{
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerHTML="🌸";
+    f.style.left=Math.random()*100+"vw";
+    f.style.animationDuration=3+Math.random()*5+"s";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),8000);
+},500);
+
+const blocks=document.querySelectorAll('.fade-block');
+window.addEventListener('scroll',()=>{
+    blocks.forEach(b=>{
+        if(b.getBoundingClientRect().top<window.innerHeight-50){
+            b.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
