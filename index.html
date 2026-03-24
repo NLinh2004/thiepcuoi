@@ -288,6 +288,72 @@
                 transform: translateY(100vh);
             }
         }
+
+        /* ===== ĐIỆN THOẠI (MOBILE) ===== */
+        @media (max-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+            .title h1 {
+                font-size: 45px;
+            }
+            .card h2 {
+                font-size: 30px;
+            }
+            .card h3 {
+                font-size: 26px;
+            }
+            .card p {
+                font-size: 20px;
+                line-height: 1.6;
+            }
+            
+            .family-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            .row-3 {
+                flex-direction: column;
+                align-items: center;
+            }
+            .row-3 img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .album-fancy {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .big {
+                grid-column: 1;
+                grid-row: 1;
+                height: 300px;
+            }
+            .album-fancy img {
+                height: auto;
+            }
+
+            .double-img {
+                flex-direction: column;
+                align-items: center;
+            }
+            .double-img img {
+                width: 90%;
+                height: auto;
+                margin-bottom: 15px;
+            }
+
+            /* Kéo giãn khối nhập tin sát mép màn hình */
+            .card {
+                margin: 15px 10px !important;
+                padding: 30px 15px !important;
+                max-width: 100% !important; /* Phá vỡ giới hạn 500px, tràn màn hình */
+                box-sizing: border-box;
+            }
+        }
     </style>
 </head>
 
@@ -304,7 +370,7 @@
         <p><b>Hữu Phước 💕 Diễm My</b></p>
         <p>Thứ 6 - 5 giờ ngày 3-4-2026</p>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
+        <div class="family-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
             <!-- Nhà trai -->
             <div>
                 <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà trai</h3>
