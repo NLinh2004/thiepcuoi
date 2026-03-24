@@ -241,6 +241,50 @@ button {
 @keyframes fall {
     100% { transform: translateY(100vh); }
 }
+
+/* ===== GIAO DIỆN ĐIỆN THOẠI (MOBILE) ===== */
+@media (max-width: 768px) {
+    .title h1 {
+        font-size: 38px;
+    }
+    
+    .family-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .row-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .row-3 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .album-fancy {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .big {
+        grid-column: 1;
+        grid-row: 1;
+        height: 300px;
+    }
+    .album-fancy img {
+        height: auto;
+    }
+
+    .double-img img {
+        width: 45%;
+        height: auto;
+    }
+
+    .card {
+        margin: 20px 15px;
+        padding: 20px 15px;
+    }
+}
 </style>
 </head>
 
@@ -257,7 +301,7 @@ button {
     <p><b>Hữu Phước 💕 Diễm My</b></p>
     <p>Thứ 6 - 5 giờ ngày 3-4-2026</p>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
+    <div class="family-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
         <!-- Nhà trai -->
         <div>
             <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà trai</h3>
