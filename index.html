@@ -55,6 +55,16 @@
             font-size: 80px;
         }
 
+        .title img {
+            width: 100%;
+            max-width: 750px;
+            height: 550px; /* Chiều cao cố định để cắt ảnh gọn gàng */
+            object-fit: cover; /* Lấp đầy khung, phần thừa tự cắt */
+            object-position: center 20%; /* Canh khung hình xích lên trên để lấy trọn mặt 2 người */
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
         /* ROW 3 ẢNH */
         .row-3 {
             display: flex;
@@ -323,22 +333,22 @@
         <p><b>Hữu Phước 💕 Diễm My</b></p>
         <p>Thứ 6 - 5 giờ ngày 3-4-2026</p>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; text-align:center;">
+        <div style="display:grid; grid-template-columns:1fr; gap:30px; text-align:center;">
             <!-- Nhà trai -->
-            <div>
-                <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà trai</h3>
-                <p><b>Ông:</b> Tăng Trường Giang<br>
-                    <b>Bà:</b> Lê Kiều Mai<br>
-                    (Ấp Phước Thành, xã Vĩnh Phước, Cà Mau)
+            <div style="background: #fff3f7; padding: 25px 20px; border-radius: 15px;">
+                <h3 style="font-family:'Dancing Script', cursive; font-size: 40px; margin: 0 0 15px 0; color: #ff6b9e;">🏡 Nhà trai</h3>
+                <p style="margin: 0; font-size: 25px; line-height: 1.6;">
+                    <b>Ông:</b> Tăng Trường Giang &nbsp;&nbsp;&hearts;&nbsp;&nbsp; <b>Bà:</b> Lê Kiều Mai<br>
+                    <span style="font-size: 22px;">(Ấp Phước Thành, xã Vĩnh Phước, Cà Mau)</span>
                 </p>
             </div>
 
             <!-- Nhà gái -->
-            <div>
-                <h3 style="font-family:'Dancing Script', cursive;">🏡 Nhà gái</h3>
-                <p><b>Ông:</b> Hồ Văn Nhựt<br>
-                    <b>Bà:</b> Nguyễn Ngọc Bích<br>
-                    (Ấp Phước Thành, xã Vĩnh Phước, tỉnh Cà Mau)
+            <div style="background: #fff3f7; padding: 25px 20px; border-radius: 15px;">
+                <h3 style="font-family:'Dancing Script', cursive; font-size: 40px; margin: 0 0 15px 0; color: #ff6b9e;">🏡 Nhà gái</h3>
+                <p style="margin: 0; font-size: 25px; line-height: 1.6;">
+                    <b>Ông:</b> Hồ Văn Nhựt &nbsp;&nbsp;&hearts;&nbsp;&nbsp; <b>Bà:</b> Nguyễn Ngọc Bích<br>
+                    <span style="font-size: 22px;">(Ấp Phước Thành, xã Vĩnh Phước, tỉnh Cà Mau)</span>
                 </p>
             </div>
         </div>
