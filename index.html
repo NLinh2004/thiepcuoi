@@ -432,26 +432,40 @@
     </div>
 
     <!-- RSVP BÌNH CHỌN -->
-    <div class="card rsvp-card" style="padding: 50px 30px;">
+    <div class="card rsvp-card" style="padding: 50px 30px;" id="rsvp-section">
         <h2 style="font-size: 55px; color: #ff6b9e; margin-bottom: 40px;">💌 Xác nhận tham dự</h2>
-        <div style="font-size: 34px; text-align: left; margin: 0 auto 30px auto; display: inline-block;">
-            <label style="cursor: pointer; display: block; margin-bottom: 25px;">
-                <input type="radio" name="rsvp" value="yes" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
-                Tôi sẽ tham gia! 🎉
-            </label>
-            <label style="cursor: pointer; display: block;">
-                <input type="radio" name="rsvp" value="no" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
-                Tôi không tham gia 😔
-            </label>
+        <div id="rsvp-form">
+            <div style="font-size: 34px; text-align: left; margin: 0 auto 30px auto; display: inline-block;">
+                <label style="cursor: pointer; display: block; margin-bottom: 25px;">
+                    <input type="radio" name="rsvp" value="yes" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
+                    Tôi sẽ tham gia! 🎉
+                </label>
+                <label style="cursor: pointer; display: block;">
+                    <input type="radio" name="rsvp" value="no" style="width: 40px; height: 40px; margin-right: 15px; vertical-align: middle;"> 
+                    Tôi không tham gia 😔
+                </label>
+            </div>
+            <input type="text" id="guest-name" placeholder="Nhập tên khách mời..." style="height: 80px; font-size: 36px; padding: 20px; border: 3px solid #ffb6c1; margin-top: 20px; margin-bottom: 40px;">
+            <button id="submit-btn" onclick="submitRSVP()" style="font-size: 40px; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255,105,180,0.4);">GỬI PHẢN HỒI</button>
         </div>
-        <input type="text" id="guest-name" placeholder="Nhập tên khách mời..." style="height: 80px; font-size: 36px; padding: 20px; border: 3px solid #ffb6c1; margin-top: 20px; margin-bottom: 40px;">
-        <button onclick="submitRSVP()" style="font-size: 40px; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(255,105,180,0.4);">GỬI PHẢN HỒI</button>
+        <div id="rsvp-success" style="display: none; padding: 40px 10px; font-size: 38px; color: #ff6b9e; font-weight: bold; line-height: 1.5;">
+            💖 Bạn đã gửi xác nhận thành công!<br>Cảm ơn bạn rất nhiều!
+        </div>
     </div>
 
     <script>
+        // Tự động kiểm tra trạng thái ngay khi có người vào xem thiệp
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('hasRSVP') === 'true') {
+                document.getElementById('rsvp-form').style.display = 'none';
+                document.getElementById('rsvp-success').style.display = 'block';
+            }
+        });
+
         async function submitRSVP() {
             const nameInput = document.getElementById('guest-name').value.trim();
             const rsvpRadio = document.querySelector('input[name="rsvp"]:checked');
+            const submitBtn = document.getElementById('submit-btn');
 
             if (!nameInput) {
                 alert("Vui lòng nhập tên của bạn!");
@@ -461,6 +475,10 @@
                 alert("Vui lòng chọn trạng thái tham dự!");
                 return;
             }
+
+            // Block nút khi đang xử lý để chống bấm đúp
+            submitBtn.innerText = "ĐANG GỬI...";
+            submitBtn.disabled = true;
 
             try {
                 const res = await fetch('https://script.google.com/macros/s/AKfycbz6THjFQUl3OLzpS7_Wu7DDcTtsyIPlqOjqRkfjQpG8MIMG2smJp8sCUiCgMNYqc29bNA/exec', {
@@ -473,14 +491,21 @@
                 });
                 const result = await res.json();
                 if (result.success) {
-                    alert("Cảm ơn bạn đã gửi xác nhận tham dự! 💖");
-                    document.getElementById('guest-name').value = '';
-                    rsvpRadio.checked = false;
+                    // Thành công: Ẩn khu vực điền form, Hiện thông điệp và giấu nút
+                    document.getElementById('rsvp-form').style.display = 'none';
+                    document.getElementById('rsvp-success').style.display = 'block';
+                    
+                    // Lưu bộ nhớ đệm trình duyệt ngăn quay lại
+                    localStorage.setItem('hasRSVP', 'true');
                 } else {
                     alert("Có lỗi xảy ra. Vui lòng thử lại!");
+                    submitBtn.innerText = "GỬI PHẢN HỒI";
+                    submitBtn.disabled = false;
                 }
             } catch (err) {
                 alert("Hiện tại không thể kết nối hoặc lưu dữ liệu, vui lòng thử lại sau!");
+                submitBtn.innerText = "GỬI PHẢN HỒI";
+                submitBtn.disabled = false;
             }
         }
 
